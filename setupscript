@@ -1,0 +1,68 @@
+#!/bin/bash
+
+#### Homebrew ####
+
+echo 'Install homebrew'
+echo '----------------'
+/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+
+#### Composer ####
+
+echo 'Install composer'
+echo '----------------'
+php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
+php -r "if (hash_file('sha384', 'composer-setup.php') === '93b54496392c062774670ac18b134c3b3a95e5a5e5c8f1a9f115f203b75bf9a129d5daa8ba6a13e2cc8a1da0806388a8') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;"
+php composer-setup.php
+php -r "unlink('composer-setup.php');"
+echo 'move composer to /usr/local/bin/composer'
+mv -f composer.phar /usr/local/bin/composer
+
+#### Homebrew Formulas ####
+# /user/local/Cellar
+
+echo 'Install wget'
+echo '------------'
+brew install wget --overwrite
+
+echo 'Install node (includes NPM)'
+echo '-----------'
+brew install node
+
+# To update global npm run: npm update npm -g
+
+echo 'Install git'
+echo '------------'
+brew install git
+
+echo 'Install mysql'
+echo '-------------'
+brew install mysql
+
+# To connect run: mysql -uroot
+# To have launchd start mysql now and restart at login: brew services start mysql
+# Or, if you don't want/need a background service you can just run: mysql.server start
+
+echo 'Install yarn'
+echo '------------'
+brew install yarn
+
+#### Composer packages ####
+# ~/.composer/vendor
+
+echo 'Install laravel/installer'
+echo '------------'
+composer global require laravel/installer
+
+echo 'Install laravel/installer'
+echo '------------'
+composer global require phpunit/phpunit
+
+#### Other ####
+
+echo 'Load .bash_profile'
+echo '------------'
+wget https://gist.githubusercontent.com/malinky/f8968618aa846605ddb668edb7a3f4e6/raw/69393e3e786e559c797aae75d4bdd33f7155e103/.bash_profile
+
+echo 'Alias Sublime Text command to subl'
+echo '------------'
+ln -s "/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl" /usr/local/bin/subl
