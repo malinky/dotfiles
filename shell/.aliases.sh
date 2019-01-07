@@ -1,6 +1,7 @@
 # Shell
 
-alias bashp="subl ~/.bash_profile"
+alias bashp="subl ~/code/dotfiles/shell/.aliasesprivate.sh"
+alias basha="subl ~/code/dotfiles/shell/.aliases.sh"
 
 # Transversing
 
