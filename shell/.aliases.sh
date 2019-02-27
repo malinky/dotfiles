@@ -15,6 +15,10 @@ alias compd="composer dump-autoload"
 alias compi="composer install"
 alias compr="composer require"
 
+function complinklaravel {
+  composer config repositories.local '{"type": "path", "url": "/home/vagrant/code/laravel-packages/'$1'"}' --file composer.json
+}
+
 # DNS
 
 alias flushdns="sudo dscacheutil -flushcache; sudo killall -HUP mDNSResponder"
@@ -28,7 +32,10 @@ alias gc="git checkout"
 alias gcb="git checkout -b"
 alias gcd="git checkout development"
 alias gcm="git checkout master"
+alias gcs="git checkout staging"
 alias gcom="git commit -am"
+alias gdlocal="git branch -d" 
+alias gdremote="git push origin --delete" 
 alias glone="git log --oneline"
 alias gm="git merge --no-ff" # esc :wq (Quit vim)
 alias gpush="git push origin"
@@ -50,8 +57,8 @@ function hs {
 }
 
 function hsssl {
-  # $1 localhost domain
-  # $2 localhost path
+  # $1 local.domain.co.uk
+  # $2 localhost folder name
   
   # Vagrant Version  -c
   hs ssh -c "cp /etc/nginx/ssl/$1.crt /home/vagrant/code/$2"

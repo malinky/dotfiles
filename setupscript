@@ -34,9 +34,17 @@ echo 'Install git'
 echo '------------'
 brew install git
 
+echo 'Install php'
+echo '-------------'
+brew install php
+
+# To have launchd start php now and restart at login: brew services start php
+# Or, if you don't want/need a background service you can just run: php-fpm
+
 echo 'Install mysql'
 echo '-------------'
-brew install mysql
+# brew install mysql
+brew install mysql@5.7
 
 # To connect run: mysql -uroot
 # To have launchd start mysql now and restart at login: brew services start mysql
@@ -56,6 +64,10 @@ composer global require laravel/installer
 echo 'Install laravel/installer'
 echo '------------'
 composer global require phpunit/phpunit
+
+echo 'Install aravel/valet'
+echo '------------'
+composer global require laravel/valet
 
 #### Other ####
 
