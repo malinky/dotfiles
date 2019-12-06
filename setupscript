@@ -65,7 +65,7 @@ echo 'Install laravel/installer'
 echo '------------'
 composer global require phpunit/phpunit
 
-echo 'Install aravel/valet'
+echo 'Install laravel/valet'
 echo '------------'
 composer global require laravel/valet
 
